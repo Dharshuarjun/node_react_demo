@@ -27,12 +27,12 @@ const [editUser,setEditUser]=useState({});
     onSubmit: async (values) => {
       try {
         if(!isEdit){
-          await axios.post("http://localhost:3001/student", values);
+          await axios.post("https://express20.herokuapp.com/student", values);
           fetchData();
         }
         else{
           delete values._id;
-          await axios.put(`http://localhost:3001/student/${editUser._id}`,values);
+          await axios.put(`https://express20.herokuapp.com/${editUser._id}`,values);
         setIsEdit(false);
         fetchData();
         }
@@ -44,7 +44,7 @@ const [editUser,setEditUser]=useState({});
   });
   let handleEdit= async (id)=>{
      try {
-      let student=await axios.get(`http://localhost:3001/student/${id}`);
+      let student=await axios.get(`https://express20.herokuapp.com/${id}`);
       formik.setValues(student.data);
       setEditUser(student.data);
       setIsEdit(true);
@@ -54,7 +54,7 @@ const [editUser,setEditUser]=useState({});
   };
   let handleDelete=async(id)=>{
     try {
-      await axios.delete(`http://localhost:3001/student/${id}`);
+      await axios.delete(`https://express20.herokuapp.com/${id}`);
       fetchData();
     } catch (error) {
       
