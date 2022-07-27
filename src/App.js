@@ -8,7 +8,7 @@ const [isEdit,setIsEdit]=useState(false);
 const [editUser,setEditUser]=useState({});
   let fetchData = async () => {
     try {
-      let res = await axios.get("http://localhost:3001/students");
+      let res = await axios.get("https://express20.herokuapp.com/students");
       setUser(res.data);
     } catch (error) {
       console.log(error);
